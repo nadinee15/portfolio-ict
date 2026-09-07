@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nadine Evangelina | Digital Creator & Developer Portfolio</title>
+    
+    <!-- Google Fonts: Inter Family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        pinky: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            dark: '#2e1065',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom UI Tweaks & Glassmorphism */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fffafb;
+            color: #334155;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(254, 205, 211, 0.5);
+        }
+
+        .glass-nav {
+            background: rgba(255, 250, 251, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(254, 205, 211, 0.4);
+        }
+
+        .figma-shadow {
+            box-shadow: 0px 10px 30px -5px rgba(251, 113, 133, 0.12), 
+                        0px 4px 12px -2px rgba(0, 0, 0, 0.03);
+        }
+
+        .figma-shadow-hover:hover {
+            box-shadow: 0px 20px 40px -10px rgba(251, 113, 133, 0.22), 
+                        0px 8px 16px -4px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fff1f2;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #fecdd3;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #fda4af;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-pinky-200 selection:text-pinky-600 min-h-screen flex flex-col">
+
+    <!-- ========================================== -->
+    <!-- HEADER NAVIGATION                          -->
+    <!-- ========================================== -->
+    <header class="sticky top-0 z-40 glass-nav transition-all">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <!-- Brand Logo -->
+                <a href="#home" class="flex items-center gap-2 group">
+                    <span class="w-8 h-8 rounded-xl bg-gradient-to-tr from-pinky-400 to-rose-300 text-white flex items-center justify-center font-black text-sm shadow-md group-hover:scale-105 transition-transform">
+                        N
+                    </span>
+                    <span id="nav-brand-name" class="font-bold text-slate-800 text-lg sm:text-xl tracking-tight capitalize">
+                        nadine evangelina<span class="text-pinky-400">.</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav id="desktop-nav-links" class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
+                    <!-- Dynamic Links Inserted by JS -->
+                </nav>
+
+                <!-- Actions: Admin Button & Mobile Menu Switch -->
+                <div class="flex items-center gap-3">
+                    <button onclick="toggleAdminMode()" class="px-4 py-2 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold flex items-center gap-2 shadow-sm transition-transform active:scale-95">
+                        <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+                        <span id="admin-btn-label">Admin</span>
+                    </button>
+
+                    <button id="mobile-menu-btn" class="p-2 rounded-xl text-slate-600 hover:bg-pinky-100 md:hidden transition-colors">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-pinky-200 bg-white/95 backdrop-blur-md px-4 pt-3 pb-6 space-y-2">
+            <div id="mobile-nav-links" class="space-y-1">
+                <!-- Dynamic Links Inserted by JS -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Save Status Indicator Badge -->
+    <div id="save-status-badge" class="fixed bottom-6 right-6 z-50 hidden items-center gap-2 bg-emerald-500 text-white text-xs font-semibold px-4 py-2.5 rounded-2xl shadow-xl border border-emerald-300 animate-bounce">
+        <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+        <span>Perubahan berhasil disimpan!</span>
+    </div>
+
+    <!-- MAIN DYNAMIC CONTENT CONTAINER -->
+    <main id="dynamic-sections-container" class="flex-1">
+        <!-- Dynamic Hero, Experience, Skills, Projects, Contact rendered via JS -->
+    </main>
+
+    <!-- ========================================== -->
+    <!-- FOOTER                                     -->
+    <!-- ========================================== -->
+    <footer class="bg-slate-900 text-white py-12 border-t border-pinky-200/20 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div class="text-center sm:text-left">
+                    <span id="footer-name" class="text-lg font-bold tracking-tight text-white block mb-1">Nadine Evangelina</span>
+                    <p class="text-xs text-slate-400">Digital Creator & Junior Developer Portfolio</p>
+                </div>
+                <div class="flex items-center gap-4 text-xs text-slate-400">
+                    <a href="#home" class="hover:text-pinky-300 transition-colors">Beranda</a>
+                    <span>•</span>
+                    <a href="#pengalaman" class="hover:text-pinky-300 transition-colors">Pengalaman</a>
+                    <span>•</span>
+                    <a href="#projects" class="hover:text-pinky-300 transition-colors">Proyek</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-slate-800 text-center text-xs text-slate-500">
+                &copy; 2026 <span class="text-slate-400 font-semibold">Nadine Evangelina</span>. Hak Cipta Dilindungi.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- MODAL: ADMIN LOGIN                         -->
+    <!-- ========================================== -->
+    <div id="login-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+        <div class="glass-card bg-white max-w-sm w-full rounded-3xl p-6 figma-shadow border border-pinky-200 relative animate-in fade-in zoom-in duration-200">
+            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-2xl bg-pinky-100 text-pinky-500 mx-auto flex items-center justify-center mb-3">
+                    <i data-lucide="lock" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-extrabold text-slate-900">Masuk Panel Admin</h3>
+                <p class="text-xs text-slate-500 mt-1">Masukkan kredensial admin untuk mengelola portofolio</p>
+            </div>
+
+            <form onsubmit="handleLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Username</label>
+                    <input type="text" id="login-username" required placeholder="admin" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400" />
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Password</label>
+                    <input type="password" id="login-password" required placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400" />
+                </div>
+
+                <div id="login-error" class="hidden text-xs text-rose-600 font-semibold bg-rose-50 p-2.5 rounded-xl border border-rose-200 text-center">
+                    Username atau Password salah! Default: admin / admin123
+                </div>
+
+                <div class="flex items-center gap-3 pt-2">
+                    <button type="button" onclick="closeLoginModal()" class="flex-1 py-2.5 rounded-xl bg-slate-100 text-slate-600 font-semibold text-xs hover:bg-slate-200">Batal</button>
+                    <button type="submit" class="flex-1 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs shadow-md">Masuk</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- MODAL: FULL ADMIN PANEL CONTROLLER         -->
+    <!-- ========================================== -->
+    <div id="admin-panel" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md">
+        <div class="glass-card bg-white max-w-4xl w-full h-[85vh] rounded-3xl overflow-hidden figma-shadow border border-pinky-200 flex flex-col sm:flex-row relative animate-in fade-in zoom-in duration-200">
+            
+            <!-- Sidebar Nav -->
+            <div class="w-full sm:w-64 bg-slate-50/80 border-b sm:border-b-0 sm:border-r border-pinky-200 p-4 sm:p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between sm:justify-start gap-2 mb-6">
+                        <span class="p-2 rounded-xl bg-pinky-400 text-white">
+                            <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                        </span>
+                        <div>
+                            <h3 class="font-extrabold text-sm text-slate-900">Admin Dashboard</h3>
+                            <p class="text-[10px] text-slate-500">Kelola Portofolio</p>
+                        </div>
+                    </div>
+
+                    <nav class="space-y-1.5">
+                        <button id="tab-nav-hero" onclick="switchAdminTab('hero')" class="admin-nav-item w-full px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:bg-pinky-100 flex items-center gap-2.5 transition-colors">
+                            <i data-lucide="user" class="w-4 h-4 text-pinky-500"></i> Hero & Bio
+                        </button>
+                        <button id="tab-nav-projects" onclick="switchAdminTab('projects')" class="admin-nav-item w-full px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:bg-pinky-100 flex items-center gap-2.5 transition-colors">
+                            <i data-lucide="folder-kanban" class="w-4 h-4 text-pinky-500"></i> Kelola Proyek
+                        </button>
+                        <button id="tab-nav-sections" onclick="switchAdminTab('sections')" class="admin-nav-item w-full px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:bg-pinky-100 flex items-center gap-2.5 transition-colors">
+                            <i data-lucide="layers" class="w-4 h-4 text-pinky-500"></i> Kelola Section
+                        </button>
+                        <button id="tab-nav-security" onclick="switchAdminTab('security')" class="admin-nav-item w-full px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:bg-pinky-100 flex items-center gap-2.5 transition-colors">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-pinky-500"></i> Keamanan
+                        </button>
+                    </nav>
+                </div>
+
+                <div class="pt-4 border-t border-pinky-200/60 flex items-center justify-between">
+                    <button onclick="exitAdminPanel()" class="text-xs font-bold text-slate-600 hover:text-slate-900 flex items-center gap-1.5">
+                        <i data-lucide="external-link" class="w-4 h-4"></i> Lihat Web
+                    </button>
+                    <button onclick="logoutAdmin()" class="text-xs font-bold text-rose-600 hover:text-rose-700 flex items-center gap-1">
+                        <i data-lucide="log-out" class="w-4 h-4"></i> Keluar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content Panel -->
+            <div class="flex-1 p-6 overflow-y-auto flex flex-col justify-between">
+                <div>
+                    <h2 id="admin-tab-title" class="text-lg font-extrabold text-slate-900 mb-6 pb-3 border-b border-pinky-100">Kelola Header & Hero Profil</h2>
+
+                    <!-- TAB 1: HERO -->
+                    <div id="admin-tab-hero-content" class="admin-tab-pane space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Nama Lengkap</label>
+                                <input type="text" id="admin-input-name" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400" />
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Email Kontak</label>
+                                <input type="email" id="admin-input-email" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400" />
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Badge Status</label>
+                            <input type="text" id="admin-input-badge" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400" />
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Bio Ringkas</label>
+                            <textarea id="admin-input-bio" rows="3" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">URL Foto Profil</label>
+                            <input type="text" id="admin-input-avatar" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400" />
+                        </div>
+                        <button onclick="updateHeroData()" class="px-5 py-2.5 bg-pinky-500 hover:bg-pinky-600 text-white rounded-xl text-xs font-bold shadow-md transition-all">Simpan Profil Hero</button>
+                    </div>
+
+                    <!-- TAB 2: PROJECTS MANAGEMENT -->
+                    <div id="admin-tab-projects-content" class="admin-tab-pane hidden space-y-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <p class="text-xs text-slate-500">Daftar kartu proyek di website portofolio.</p>
+                            <button onclick="openProjectModal()" class="px-3.5 py-2 rounded-xl bg-pinky-500 hover:bg-pinky-600 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm">
+                                <i data-lucide="plus" class="w-4 h-4"></i> Tambah Proyek
+                            </button>
+                        </div>
+                        <div id="admin-projects-list" class="divide-y divide-pinky-100 border border-pinky-200 rounded-2xl overflow-hidden bg-white"></div>
+                    </div>
+
+                    <!-- TAB 3: SECTIONS MANAGEMENT -->
+                    <div id="admin-tab-sections-content" class="admin-tab-pane hidden space-y-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <p class="text-xs text-slate-500">Kelola dan edit judul, sub-judul, maupun tambah/hapus section.</p>
+                            <button onclick="openNewSectionModal()" class="px-3.5 py-2 rounded-xl bg-pinky-500 hover:bg-pinky-600 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm">
+                                <i data-lucide="plus" class="w-4 h-4"></i> Tambah Section
+                            </button>
+                        </div>
+                        <div id="admin-sections-list" class="space-y-3"></div>
+                    </div>
+
+                    <!-- TAB 4: SECURITY -->
+                    <div id="admin-tab-security-content" class="admin-tab-pane hidden space-y-4">
+                        <form onsubmit="handleUpdateCredentials(event)" class="space-y-4 max-w-md">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Username Baru</label>
+                                <input type="text" id="admin-new-username" required class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400" />
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Password Baru</label>
+                                <input type="password" id="admin-new-password" required placeholder="Masukkan password baru" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400" />
+                            </div>
+                            <button type="submit" class="px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold shadow-md">Update Kredensial Admin</button>
+                        </form>
+                        <div id="security-alert" class="hidden p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold">
+                            ✓ Kredensial login admin berhasil diperbarui!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- MODAL: ADD/EDIT SECTION                    -->
+    <!-- ========================================== -->
+    <div id="new-section-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm">
+        <div class="glass-card bg-white max-w-lg w-full rounded-3xl p-6 figma-shadow border border-pinky-200 relative animate-in fade-in zoom-in duration-200">
+            <button onclick="closeNewSectionModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <h3 id="sec-modal-heading" class="text-lg font-extrabold text-slate-900 mb-1">Buat Section Baru</h3>
+            <p class="text-xs text-slate-500 mb-4">Kelola dan sesuaikan judul, navigasi, serta deskripsi section di website.</p>
+
+            <form onsubmit="handleSaveSection(event)" class="space-y-4">
+                <input type="hidden" id="sec-form-mode" value="create" />
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">ID Section (Unik, tanpa spasi)</label>
+                    <input type="text" id="sec-form-id" required placeholder="contoh: layanan, pengalaman" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400 disabled:opacity-50" />
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Nav Title (Label Navigasi Header)</label>
+                    <input type="text" id="sec-form-navtitle" required placeholder="Contoh: Pengalaman" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400" />
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Sub Title (Kategori/Label Kecil)</label>
+                    <input type="text" id="sec-form-subtitle" required placeholder="Contoh: Layanan Profesional" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400" />
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Main Title (Judul Utama)</label>
+                    <input type="text" id="sec-form-maintitle" required placeholder="Contoh: Apa Yang Bisa Saya Bantu" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400" />
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Description (Penjelasan Section)</label>
+                    <textarea id="sec-form-desc" rows="3" required placeholder="Tuliskan deskripsi lengkap section ini..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400"></textarea>
+                </div>
+
+                <div class="flex items-center gap-3 pt-2">
+                    <button type="button" onclick="closeNewSectionModal()" class="flex-1 py-2.5 rounded-xl bg-slate-100 text-slate-600 font-semibold text-xs">Batal</button>
+                    <button type="submit" class="flex-1 py-2.5 rounded-xl bg-pinky-500 hover:bg-pinky-600 text-white font-semibold text-xs shadow-md">Simpan Section</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- MODAL: ADD/EDIT PROJECT                    -->
+    <!-- ========================================== -->
+    <div id="project-edit-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm">
+        <div class="glass-card bg-white max-w-lg w-full rounded-3xl p-6 figma-shadow border border-pinky-200 relative animate-in fade-in zoom-in duration-200 max-h-[90vh] overflow-y-auto">
+            <button onclick="closeProjectModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <h3 id="project-modal-heading" class="text-lg font-extrabold text-slate-900 mb-1">Tambah Proyek Baru</h3>
+            <p class="text-xs text-slate-500 mb-4">Isi detail data proyek portofolio baru Anda.</p>
+
+            <form onsubmit="handleSaveProject(event)" class="space-y-4">
+                <input type="hidden" id="proj-form-id" />
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Judul Proyek</label>
+                    <input type="text" id="proj-form-title" required placeholder="Contoh: Netflix UI Redesign" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400" />
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Kategori</label>
+                    <select id="proj-form-category" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400">
+                        <option value="uiux">UI/UX Design</option>
+                        <option value="web">Web Application</option>
+                        <option value="media">Media & Entertainment</option>
+                        <option value="other">Lainnya</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Tags (Pisahkan dengan koma)</label>
+                    <input type="text" id="proj-form-tags" required placeholder="Figma, UI Design, Netflix" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400" />
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Link Live Proyek / Website (Opsional)</label>
+                    <input type="url" id="proj-form-link" placeholder="https://..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400" />
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">URL Gambar Thumbnail</label>
+                    <input type="url" id="proj-form-image" required placeholder="https://images.unsplash.com/..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400" />
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Deskripsi Proyek</label>
+                    <textarea id="proj-form-desc" rows="3" required placeholder="Jelaskan secara ringkas proyek ini..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400"></textarea>
+                </div>
+
+                <div class="flex items-center gap-3 pt-2">
+                    <button type="button" onclick="closeProjectModal()" class="flex-1 py-2.5 rounded-xl bg-slate-100 text-slate-600 font-semibold text-xs">Batal</button>
+                    <button type="submit" class="flex-1 py-2.5 rounded-xl bg-pinky-500 hover:bg-pinky-600 text-white font-semibold text-xs shadow-md">Simpan Proyek</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- FRONTEND PROJECT DETAIL MODAL              -->
+    <!-- ========================================== -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm transition-opacity">
+        <div class="glass-card bg-white max-w-lg w-full rounded-3xl overflow-hidden figma-shadow border border-pinky-200 relative animate-in fade-in zoom-in duration-200">
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-white/80 hover:bg-white text-slate-600 flex items-center justify-center shadow-md transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="h-48 sm:h-56 overflow-hidden bg-pinky-100">
+                <img id="modal-img" src="" alt="Detail Proyek" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-6">
+                <h3 id="modal-title" class="text-xl font-bold text-slate-900 mb-2"></h3>
+                <p id="modal-desc" class="text-slate-600 text-sm leading-relaxed mb-4"></p>
+                <div class="mb-6">
+                    <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Teknologi</h4>
+                    <div id="modal-tags" class="flex flex-wrap gap-2"></div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a id="modal-link-btn" href="#" target="_blank" class="flex-1 py-2.5 rounded-xl bg-pinky-400 hover:bg-pinky-500 text-white font-semibold text-sm transition-colors text-center flex items-center justify-center gap-2">
+                        <span>Buka Situs / Tautan Live</span>
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </a>
+                    <button onclick="closeModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm transition-colors">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- CORE JAVASCRIPT STATE & APPLICATION ENGINE  -->
+    <!-- ========================================== -->
+    <script>
+        // INITIAL DEFAULT STATE DATA
+        const DEFAULT_STATE = {
+            auth: {
+                username: "admin",
+                password: "admin123"
+            },
+            hero: {
+                name: "Nadine Evangelina",
+                tagline: "Junior Web Developer & Tech Enthusiast",
+                email: "nadineputri@mutiarabangsa.sch.id",
+                badgeText: "Terbuka untuk Kolaborasi Baru",
+                bio: "Siswa kelas 9A Sekolah Mutiara Bangsa 2 yang berdedikasi tinggi dan memiliki minat besar di bidang Informatika, Seni Desain, Kaligrafi, serta Olahraga Badminton.",
+                avatarUrl: "https://media.desenio.com/site_images/685d71bbcaacebb10a60bf8d_1845206813_18202-5.jpg",
+                focusText: "Junior Web Developer & Tech Enthusiast"
+            },
+            skills: [
+                {
+                    title: "Designing Creative Things",
+                    desc: "Merancang karya visual, desain poster, dan konsep UI/UX dengan estetika bersih dan menarik.",
+                    icon: "palette"
+                },
+                {
+                    title: "Kaligrafi & Lettering",
+                    desc: "Seni menulis indah dan ekspresi artistik melukis topeng serta karya seni rupa.",
+                    icon: "pen-tool"
+                },
+                {
+                    title: "Badminton",
+                    desc: "Olahraga kompetitif dengan pencapaian Juara 1 dua kali berturut-turut.",
+                    icon: "trophy"
+                },
+                {
+                    title: "Pembelajar Cepat (Fast Learner)",
+                    desc: "Semangat tinggi untuk mempelajari bidang baru secara otodidak hingga meraih berbagai penghargaan.",
+                    icon: "sparkles"
+                }
+            ],
+            experiences: [
+                {
+                    id: "exp-1",
+                    year: "2024",
+                    grade: "Kelas 6",
+                    title: "Juara 1",
+                    category: "Akademik / Kelas",
+                    icon: "award",
+                    badgeColor: "bg-pinky-100 text-pinky-600",
+                    description: "Berhasil meraih prestasi Juara 1 tingkat kelas 6."
+                },
+                {
+                    id: "exp-2",
+                    year: "2024",
+                    grade: "Kelas 6",
+                    title: "Juara 1 Lomba Poster Adiwiyata",
+                    category: "Desain & Lingkungan",
+                    icon: "palette",
+                    badgeColor: "bg-emerald-100 text-emerald-700",
+                    description: "Memenangkan Juara 1 dalam kompetisi desain poster bertema lingkungan sekolah Adiwiyata."
+                },
+                {
+                    id: "exp-3",
+                    year: "2024",
+                    grade: "Kelas 7",
+                    title: "Juara 2 Lomba Presentasi Natural Learning (Study Tour)",
+                    category: "Public Speaking & Study Tour",
+                    icon: "mic",
+                    badgeColor: "bg-amber-100 text-amber-700",
+                    description: "Meraih Juara 2 pada ajang presentasi penyampaian laporan dan pengalaman edukatif dari kegiatan study tour Natural Learning kelas 7."
+                },
+                {
+                    id: "exp-4",
+                    year: "2025",
+                    grade: "Kelas 7",
+                    title: "Juara 1",
+                    category: "Akademik / Kelas",
+                    icon: "award",
+                    badgeColor: "bg-pinky-100 text-pinky-600",
+                    description: "Berhasil mempertahankan peringkat Juara 1 saat menduduki kelas 7."
+                },
+                {
+                    id: "exp-5",
+                    year: "2025",
+                    grade: "Kelas 7",
+                    title: "Juara 1 Menghias Topeng",
+                    category: "Seni & Seni Rupa",
+                    icon: "sparkles",
+                    badgeColor: "bg-rose-100 text-rose-700",
+                    description: "Juara 1 lomba kreasi menghias topeng pada event gabungan Valentine's & Chinese New Year."
+                },
+                {
+                    id: "exp-6",
+                    year: "2025 & 2026",
+                    grade: "Kelas 8",
+                    title: "Juara 1 Badminton (2 Kali Beruntun)",
+                    category: "Olahraga",
+                    icon: "trophy",
+                    badgeColor: "bg-sky-100 text-sky-700",
+                    description: "Menjuarai kompetisi olahraga badminton sebanyak 2 kali berturut-turut pada periode 2025 dan 2026."
+                },
+                {
+                    id: "exp-7",
+                    year: "2026",
+                    grade: "Kelas 9",
+                    title: "Juara 1 Lomba Poster 17 Agustus",
+                    category: "Seni & Desain",
+                    icon: "flag",
+                    badgeColor: "bg-red-100 text-red-700",
+                    description: "Meraih Juara 1 dalam lomba kreativitas desain poster peringatan Hari Kemerdekaan 17 Agustus."
+                }
+            ],
+            projects: [
+                {
+                    id: "p1",
+                    title: "Netflix Movie Experience",
+                    category: "media",
+                    tags: ["Netflix", "UI Design", "Streaming"],
+                    link: "https://netflix.com",
+                    image: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&q=80&w=800",
+                    description: "Eksplorasi antarmuka platform film Netflix dengan tata letak minimalis dan sistem rekomendasi tayangan favorit."
+                },
+                {
+                    id: "p2",
+                    title: "YouTube Channel & Video Web",
+                    category: "web",
+                    tags: ["YouTube", "Video", "Creator Hub"],
+                    link: "https://youtube.com",
+                    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=800",
+                    description: "Platform streaming video berbasis YouTube untuk publikasi konten kreator, galeri video, dan playlist interaktif."
+                },
+                {
+                    id: "p3",
+                    title: "Spotify Music & Podcast Web",
+                    category: "uiux",
+                    tags: ["Spotify", "Audio Player", "Music App"],
+                    link: "https://spotify.com",
+                    image: "https://cdn.britannica.com/49/255249-050-98B74D34/Spotify-logo-cellphone.jpg",
+                    description: "Aplikasi pemutar musik dan podcast ala Spotify dengan tema soft aesthetic, kontrol lagu intuitif, dan lirik terintegrasi."
+                }
+            ],
+            sections: [
+                {
+                    id: "about",
+                    navTitle: "Tentang Saya",
+                    subTitle: "Profil & Sekolah",
+                    mainTitle: "Tentang Saya",
+                    description: "Mengenal lebih dekat latar belakang pendidikan dan ketertarikan di dunia teknologi informatika.",
+                    type: "about",
+                    canDelete: false
+                },
+                {
+                    id: "pengalaman",
+                    navTitle: "Pengalaman",
+                    subTitle: "Rekam Jejak & Prestasi",
+                    mainTitle: "Pengalaman & Pencapaian Juara",
+                    description: "Kumpulan pencapaian akademik, seni, dan olahraga yang diraih sepanjang perjalanan studi.",
+                    type: "experience",
+                    canDelete: true
+                },
+                {
+                    id: "skills",
+                    navTitle: "Keahlian",
+                    subTitle: "Kemampuan & Minat",
+                    mainTitle: "Keahlian Utama",
+                    description: "Kombinasi kreativitas desain visual, seni kaligrafi, dan bakat olahraga yang ditekuni dengan semangat belajar tinggi.",
+                    type: "skills",
+                    canDelete: true
+                },
+                {
+                    id: "projects",
+                    navTitle: "Proyek",
+                    subTitle: "Portofolio & Karya",
+                    mainTitle: "Proyek Pilihan Terbaru",
+                    description: "Eksplorasi kumpulan hasil kerja terbaik saya dalam bidang Web Design, Aplikasi Mobile, dan Media Hiburan.",
+                    type: "projects",
+                    canDelete: false
+                },
+                {
+                    id: "contact",
+                    navTitle: "Kontak",
+                    subTitle: "Mari Berkolaborasi",
+                    mainTitle: "Hubungi Saya",
+                    description: "Punya ide proyek menarik atau sekadar ingin menyapa? Kirimkan pesan Anda.",
+                    type: "contact",
+                    canDelete: false
+                }
+            ]
+        };
+
+        // Application State Controller
+        let appData = JSON.parse(localStorage.getItem('ne_portfolio_data')) || DEFAULT_STATE;
+        
+        // Sync default state properties if missing or updated
+        if(appData) {
+            appData.hero.tagline = "Junior Web Developer & Tech Enthusiast";
+            appData.hero.focusText = "Junior Web Developer & Tech Enthusiast";
+
+            // Update NL Experience to Kelas 7 & Study Tour presentation
+            if(appData.experiences) {
+                const exp3 = appData.experiences.find(e => e.id === 'exp-3');
+                if(exp3) {
+                    exp3.year = "2024";
+                    exp3.grade = "Kelas 7";
+                    exp3.title = "Juara 2 Lomba Presentasi Natural Learning (Study Tour)";
+                    exp3.category = "Public Speaking & Study Tour";
+                    exp3.description = "Meraih Juara 2 pada ajang presentasi penyampaian laporan dan pengalaman edukatif dari kegiatan study tour Natural Learning kelas 7.";
+                }
+            }
+
+            // Ensure About Me section exists
+            if(appData.sections && !appData.sections.some(s => s.id === 'about')) {
+                appData.sections.unshift({
+                    id: "about",
+                    navTitle: "Tentang Saya",
+                    subTitle: "Profil & Sekolah",
+                    mainTitle: "Tentang Saya",
+                    description: "Mengenal lebih dekat latar belakang pendidikan dan ketertarikan di dunia teknologi informatika.",
+                    type: "about",
+                    canDelete: false
+                });
+            }
+        }
+        let isLoggedIn = false;
+
+        function saveData() {
+            localStorage.setItem('ne_portfolio_data', JSON.stringify(appData));
+            showSaveBadge();
+            renderFrontend();
+        }
+
+        function showSaveBadge() {
+            const badge = document.getElementById('save-status-badge');
+            if(badge) {
+                badge.classList.remove('hidden');
+                badge.classList.add('inline-flex');
+                setTimeout(() => {
+                    badge.classList.add('hidden');
+                    badge.classList.remove('inline-flex');
+                }, 2000);
+            }
+        }
+
+        // INITIALIZATION
+        window.addEventListener('DOMContentLoaded', () => {
+            renderFrontend();
+            
+            // Safe binding for mobile menu button
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if(mobileMenu) mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            if(typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+
+        // FRONTEND RENDER ENGINE
+        function renderFrontend() {
+            // Update Brand Name & Admin Label
+            const brandEl = document.getElementById('nav-brand-name');
+            if (brandEl) {
+                brandEl.innerHTML = `${appData.hero.name.toLowerCase()}<span class="text-pinky-400">.</span>`;
+            }
+
+            const footerNameEl = document.getElementById('footer-name');
+            if (footerNameEl) {
+                footerNameEl.textContent = appData.hero.name;
+            }
+
+            const adminBtnLabel = document.getElementById('admin-btn-label');
+            if(adminBtnLabel) {
+                adminBtnLabel.textContent = isLoggedIn ? "Dashboard" : "Admin";
+            }
+
+            // Render Nav Links
+            const desktopNav = document.getElementById('desktop-nav-links');
+            const mobileNav = document.getElementById('mobile-nav-links');
+            if (desktopNav) desktopNav.innerHTML = '';
+            if (mobileNav) mobileNav.innerHTML = '';
+
+            if (appData.sections) {
+                appData.sections.forEach(sec => {
+                    if (desktopNav) {
+                        if(sec.id === 'contact') {
+                            desktopNav.innerHTML += `
+                                <a href="#${sec.id}" class="px-4 py-2 rounded-full bg-pinky-100 text-pinky-600 font-semibold hover:bg-pinky-400 hover:text-white transition-all shadow-sm">
+                                    ${sec.navTitle || sec.mainTitle}
+                                </a>
+                            `;
+                        } else {
+                            desktopNav.innerHTML += `
+                                <a href="#${sec.id}" class="hover:text-pinky-500 transition-colors">${sec.navTitle || sec.mainTitle}</a>
+                            `;
+                        }
+                    }
+
+                    if (mobileNav) {
+                        if(sec.id === 'contact') {
+                            mobileNav.innerHTML += `
+                                <a href="#${sec.id}" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-center bg-pinky-400 text-white shadow-md hover:bg-pinky-500">${sec.navTitle || sec.mainTitle}</a>
+                            `;
+                        } else {
+                            mobileNav.innerHTML += `
+                                <a href="#${sec.id}" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-pinky-50 hover:text-pinky-500">${sec.navTitle || sec.mainTitle}</a>
+                            `;
+                        }
+                    }
+                });
+            }
+
+            // Re-bind Mobile Links Event
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (mobileMenu) mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Render Dynamic Sections Body
+            const container = document.getElementById('dynamic-sections-container');
+            if (container) {
+                container.innerHTML = '';
+
+                // Render HERO FIRST
+                container.innerHTML += renderHeroSectionHTML();
+
+                // Render Active Sections in order
+                appData.sections.forEach(sec => {
+                    if(sec.type === 'about') {
+                        container.innerHTML += renderAboutSectionHTML(sec);
+                    } else if(sec.type === 'experience') {
+                        container.innerHTML += renderExperienceSectionHTML(sec);
+                    } else if(sec.type === 'skills') {
+                        container.innerHTML += renderSkillsSectionHTML(sec);
+                    } else if(sec.type === 'projects') {
+                        container.innerHTML += renderProjectsSectionHTML(sec);
+                    } else if(sec.type === 'contact') {
+                        container.innerHTML += renderContactSectionHTML(sec);
+                    } else if(sec.type === 'custom') {
+                        container.innerHTML += renderCustomSectionHTML(sec);
+                    }
+                });
+            }
+
+            if(typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        }
+
+        // SECTION RENDER TEMPLATES
+        function renderHeroSectionHTML() {
+            return `
+                <section id="home" class="relative overflow-hidden py-12 sm:py-20 lg:py-28">
+                    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 sm:w-96 sm:h-96 bg-pinky-200/50 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+                    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+                            <div class="flex-1 text-center lg:text-left">
+                                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pinky-100 text-pinky-600 text-xs sm:text-sm font-semibold mb-6 border border-pinky-200/60 shadow-sm">
+                                    <span class="w-2 h-2 rounded-full bg-pinky-400 animate-ping"></span>
+                                    <span>${appData.hero.badgeText}</span>
+                                </div>
+                                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight mb-3">
+                                    Halo, Saya <br class="hidden sm:inline"/>
+                                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-pinky-400 via-pinky-500 to-rose-400">
+                                        ${appData.hero.name}
+                                    </span>
+                                </h1>
+                                <p class="text-sm sm:text-base font-extrabold text-pinky-500 tracking-wide uppercase mb-6 flex items-center justify-center lg:justify-start gap-2">
+                                    <i data-lucide="code-2" class="w-4 h-4"></i>
+                                    <span>${appData.hero.tagline || 'Junior Web Developer & Tech Enthusiast'}</span>
+                                </p>
+                                <p class="text-base sm:text-lg text-slate-600 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
+                                    ${appData.hero.bio}
+                                </p>
+                                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                                    <a href="#projects" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-pinky-400 hover:bg-pinky-500 text-white font-semibold flex items-center justify-center gap-2 shadow-lg shadow-pinky-300/50 hover:shadow-pinky-400/50 hover:-translate-y-0.5 transition-all">
+                                        <span>Lihat Portofolio</span>
+                                        <i data-lucide="arrow-down-right" class="w-5 h-5"></i>
+                                    </a>
+                                    <a href="mailto:${appData.hero.email || 'nadineputri@mutiarabangsa.sch.id'}" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white hover:bg-pinky-50 text-slate-700 font-semibold border border-pinky-200 flex items-center justify-center gap-2 shadow-sm hover:-translate-y-0.5 transition-all">
+                                        <span>Kirim Email</span>
+                                        <i data-lucide="mail" class="w-4 h-4 text-pinky-400"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex-1 w-full max-w-md lg:max-w-none flex justify-center">
+                                <div class="relative">
+                                    <div class="absolute -inset-2 bg-gradient-to-r from-pinky-300 to-rose-300 rounded-3xl blur-lg opacity-40"></div>
+                                    <div class="relative w-64 h-80 sm:w-80 sm:h-96 rounded-3xl overflow-hidden glass-card p-3 figma-shadow border-2 border-white">
+                                        <div class="w-full h-full rounded-2xl overflow-hidden relative bg-pinky-100">
+                                            <img src="${appData.hero.avatarUrl}" alt="${appData.hero.name}" class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500" />
+                                            <div class="absolute inset-0 bg-gradient-to-t from-pinky-900/40 via-transparent to-transparent"></div>
+                                            <div class="absolute bottom-4 left-4 right-4 p-3 rounded-xl glass-card border border-white/60 text-slate-800 flex items-center gap-3">
+                                                <div class="p-2 rounded-lg bg-pinky-300 text-white">
+                                                    <i data-lucide="sparkles" class="w-5 h-5"></i>
+                                                </div>
+                                                <div>
+                                                    <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Fokus Profil</p>
+                                                    <p class="text-xs sm:text-sm font-bold text-slate-800">${appData.hero.focusText}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderAboutSectionHTML(sec) {
+            return `
+                <section id="${sec.id}" class="py-16 sm:py-20 bg-white/60 border-y border-pinky-100">
+                    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="glass-card rounded-3xl p-8 sm:p-10 figma-shadow border border-pinky-200">
+                            <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
+                                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-pinky-100 text-pinky-500 flex items-center justify-center shrink-0 shadow-inner">
+                                    <i data-lucide="user-check" class="w-10 h-10"></i>
+                                </div>
+                                <div class="text-center sm:text-left space-y-3">
+                                    <div class="inline-flex items-center gap-2 text-pinky-500 font-semibold text-xs sm:text-sm tracking-wider uppercase">
+                                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                                        <span>${sec.subTitle}</span>
+                                    </div>
+                                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">${sec.mainTitle}</h2>
+                                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                                        Saya adalah siswa <strong>kelas 9A di Sekolah Mutiara Bangsa 2</strong>. Selain aktif mengukir prestasi akademik dan non-akademik di sekolah, saya memiliki ketertarikan serta antusiasme yang sangat tinggi di bidang <strong>Informatika</strong>, pemrograman web, dan eksplorasi dunia teknologi digital.
+                                    </p>
+                                    <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 pt-2">
+                                        <span class="px-3 py-1 rounded-full bg-pinky-100 text-pinky-600 text-xs font-semibold flex items-center gap-1">
+                                            <i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> Sekolah Mutiara Bangsa 2
+                                        </span>
+                                        <span class="px-3 py-1 rounded-full bg-pinky-100 text-pinky-600 text-xs font-semibold">Kelas 9A</span>
+                                        <span class="px-3 py-1 rounded-full bg-rose-100 text-rose-600 text-xs font-semibold flex items-center gap-1">
+                                            <i data-lucide="laptop" class="w-3.5 h-3.5"></i> Informatika & Tech
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        // VERTICAL TIMELINE FOR PRESTASI/PENGALAMAN
+        function renderExperienceSectionHTML(sec) {
+            return `
+                <section id="${sec.id}" class="py-16 sm:py-24 bg-gradient-to-b from-transparent via-pinky-50/30 to-transparent">
+                    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="text-center max-w-2xl mx-auto mb-16">
+                            <div class="inline-flex items-center gap-2 text-pinky-500 font-semibold text-xs sm:text-sm tracking-wider uppercase mb-2">
+                                <i data-lucide="trophy" class="w-4 h-4"></i>
+                                <span>${sec.subTitle}</span>
+                            </div>
+                            <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                                ${sec.mainTitle}
+                            </h2>
+                            <p class="text-slate-600 text-sm sm:text-base mt-3">
+                                ${sec.description}
+                            </p>
+                        </div>
+
+                        <!-- Vertical Timeline Container -->
+                        <div class="relative wrap overflow-hidden p-2 sm:p-4 h-full">
+                            <!-- Timeline Center Line -->
+                            <div class="border-2-2 absolute border-opacity-30 border-pinky-300 h-full border left-4 md:left-1/2 -ml-0.5"></div>
+
+                            ${appData.experiences.map((exp, idx) => {
+                                const isEven = idx % 2 === 0;
+                                return `
+                                    <div class="mb-10 flex justify-between items-center w-full ${isEven ? 'md:flex-row-reverse' : ''} flex-row">
+                                        
+                                        <!-- Spacer for desktop side alignment -->
+                                        <div class="order-1 hidden md:block w-5/12"></div>
+
+                                        <!-- Timeline Badge / Dot Icon -->
+                                        <div class="z-20 flex items-center order-1 w-9 h-9 rounded-full bg-pinky-400 text-white shadow-md shadow-pinky-300 ring-4 ring-white left-0 md:left-auto">
+                                            <i data-lucide="${exp.icon || 'trophy'}" class="w-4 h-4 mx-auto"></i>
+                                        </div>
+
+                                        <!-- Card Content -->
+                                        <div class="order-1 glass-card rounded-3xl p-6 figma-shadow figma-shadow-hover transition-all duration-300 w-[calc(100%-3rem)] md:w-5/12 ml-4 md:ml-0 border border-pinky-200/80 hover:-translate-y-1">
+                                            <div class="flex items-center justify-between gap-2 mb-3">
+                                                <span class="px-3 py-1 rounded-full text-xs font-bold ${exp.badgeColor || 'bg-pinky-100 text-pinky-600'}">
+                                                    ${exp.grade}
+                                                </span>
+                                                <span class="text-xs font-bold text-pinky-500 flex items-center gap-1 bg-pinky-50 px-2.5 py-1 rounded-full">
+                                                    <i data-lucide="calendar" class="w-3.5 h-3.5"></i> ${exp.year}
+                                                </span>
+                                            </div>
+                                            
+                                            <h3 class="text-base font-bold text-slate-900 leading-snug mb-1">${exp.title}</h3>
+                                            <span class="inline-block text-[11px] font-semibold text-pinky-600 uppercase tracking-wider mb-2">${exp.category}</span>
+                                            
+                                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-pinky-100/80 pt-3 mt-1">
+                                                ${exp.description}
+                                            </p>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderSkillsSectionHTML(sec) {
+            const skillsList = appData.skills || DEFAULT_STATE.skills;
+            return `
+                <section id="${sec.id}" class="py-16 sm:py-20 bg-white/70 border-t border-pinky-100">
+                    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="text-center max-w-2xl mx-auto mb-14">
+                            <div class="inline-flex items-center gap-2 text-pinky-500 font-semibold text-xs sm:text-sm tracking-wider uppercase mb-2">
+                                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                                <span>${sec.subTitle}</span>
+                            </div>
+                            <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                                ${sec.mainTitle}
+                            </h2>
+                            <p class="text-slate-600 text-sm sm:text-base mt-3">
+                                ${sec.description}
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            ${skillsList.map(s => `
+                                <div class="p-6 rounded-3xl glass-card figma-shadow figma-shadow-hover transition-all duration-300 border border-pinky-100 flex flex-col justify-between">
+                                    <div>
+                                        <div class="w-12 h-12 mb-4 rounded-2xl bg-pinky-100 text-pinky-500 flex items-center justify-center">
+                                            <i data-lucide="${s.icon || 'star'}" class="w-6 h-6"></i>
+                                        </div>
+                                        <h4 class="font-bold text-slate-800 text-base mb-2">${s.title}</h4>
+                                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${s.desc}</p>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderProjectsSectionHTML(sec) {
+            return `
+                <section id="${sec.id}" class="py-16 sm:py-24">
+                    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                            <div>
+                                <div class="inline-flex items-center gap-2 text-pinky-500 font-semibold text-xs sm:text-sm tracking-wider uppercase mb-2">
+                                    <i data-lucide="layout-grid" class="w-4 h-4"></i>
+                                    <span>${sec.subTitle}</span>
+                                </div>
+                                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                                    ${sec.mainTitle}
+                                </h2>
+                            </div>
+                            <p class="text-slate-600 text-sm sm:text-base max-w-md mt-2 md:mt-0">
+                                ${sec.description}
+                            </p>
+                        </div>
+
+                        <!-- Projects Cards Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                            ${appData.projects.map(p => `
+                                <div class="group glass-card rounded-3xl overflow-hidden figma-shadow figma-shadow-hover transition-all duration-300 flex flex-col relative">
+                                    <div class="relative h-52 sm:h-60 overflow-hidden bg-pinky-100">
+                                        <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-pinky-600 shadow-sm border border-pinky-100 uppercase">
+                                            ${p.category}
+                                        </div>
+                                    </div>
+                                    <div class="p-6 flex-1 flex flex-col justify-between">
+                                        <div>
+                                            <h3 class="text-xl font-bold text-slate-900 group-hover:text-pinky-500 transition-colors mb-2">
+                                                ${p.title}
+                                            </h3>
+                                            <p class="text-slate-600 text-sm line-clamp-2 mb-4 leading-relaxed">
+                                                ${p.description}
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <div class="flex flex-wrap gap-2 mb-6">
+                                                ${p.tags.map(t => `<span class="px-2.5 py-1 rounded-md bg-pinky-50 text-pinky-600 text-xs font-medium">${t}</span>`).join('')}
+                                            </div>
+                                            
+                                            <!-- Interactive Action Buttons -->
+                                            <div class="flex items-center gap-2">
+                                                ${p.link ? `
+                                                    <a href="${p.link}" target="_blank" 
+                                                       class="flex-1 py-2.5 rounded-xl bg-pinky-400 hover:bg-pinky-500 text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-sm transition-colors">
+                                                        <span>Kunjungi Link</span>
+                                                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                                                    </a>
+                                                    <button onclick="openModal('${p.title.replace(/'/g, "\\'")}', '${p.description.replace(/'/g, "\\'")}', '${p.image}', ${JSON.stringify(p.tags).replace(/"/g, '&quot;')}, '${p.link || '#'}')" 
+                                                            class="p-2.5 rounded-xl bg-pinky-50 hover:bg-pinky-100 text-pinky-600 transition-colors" title="Detail">
+                                                        <i data-lucide="info" class="w-4 h-4"></i>
+                                                    </button>
+                                                ` : `
+                                                    <button onclick="openModal('${p.title.replace(/'/g, "\\'")}', '${p.description.replace(/'/g, "\\'")}', '${p.image}', ${JSON.stringify(p.tags).replace(/"/g, '&quot;')}, '${p.link || '#'}')" 
+                                                            class="flex-1 py-2.5 rounded-xl bg-pinky-50 hover:bg-pinky-400 text-pinky-600 hover:text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-colors">
+                                                        <span>Detail Proyek</span>
+                                                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                                                    </button>
+                                                `}
+
+                                                ${isLoggedIn ? `
+                                                    <button onclick="editProjectFrontend('${p.id}')" title="Edit Proyek Ini" class="p-2.5 rounded-xl bg-amber-50 hover:bg-amber-400 text-amber-600 hover:text-white transition-colors">
+                                                        <i data-lucide="edit-3" class="w-4 h-4"></i>
+                                                    </button>
+                                                    <button onclick="deleteProject('${p.id}')" title="Hapus Proyek Ini" class="p-2.5 rounded-xl bg-rose-50 hover:bg-rose-400 text-rose-600 hover:text-white transition-colors">
+                                                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                                    </button>
+                                                ` : ''}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderContactSectionHTML(sec) {
+            return `
+                <section id="${sec.id}" class="py-16 sm:py-24">
+                    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="glass-card rounded-3xl p-6 sm:p-10 figma-shadow border-2 border-pinky-200/60 relative overflow-hidden">
+                            <div class="text-center max-w-xl mx-auto mb-8">
+                                <span class="inline-block p-3 rounded-2xl bg-pinky-100 text-pinky-500 mb-3">
+                                    <i data-lucide="send" class="w-6 h-6"></i>
+                                </span>
+                                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">${sec.mainTitle}</h2>
+                                <p class="text-slate-600 text-sm sm:text-base mt-2">${sec.description}</p>
+                                <p class="text-xs text-pinky-600 font-semibold mt-1">Email: ${appData.hero.email}</p>
+                            </div>
+
+                            <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Nama Lengkap</label>
+                                        <input type="text" required placeholder="Contoh: Budi Santoso" class="w-full px-4 py-3 rounded-xl bg-white/80 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400" />
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Email Anda</label>
+                                        <input type="email" required placeholder="nama@email.com" class="w-full px-4 py-3 rounded-xl bg-white/80 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Subjek</label>
+                                    <input type="text" required placeholder="Subjek atau nama proyek..." class="w-full px-4 py-3 rounded-xl bg-white/80 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400" />
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Pesan Anda</label>
+                                    <textarea rows="4" required placeholder="Tuliskan detail pesan Anda..." class="w-full px-4 py-3 rounded-xl bg-white/80 border border-pinky-200 text-sm focus:outline-none focus:ring-2 focus:ring-pinky-400"></textarea>
+                                </div>
+                                <button type="submit" class="w-full py-3.5 rounded-xl bg-pinky-400 hover:bg-pinky-500 text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-lg shadow-pinky-300/50 transition-all">
+                                    <i data-lucide="send" class="w-4 h-4"></i>
+                                    <span>Kirim Pesan Sekarang</span>
+                                </button>
+                            </form>
+                            <div id="form-alert" class="hidden mt-4 p-4 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 text-sm font-medium text-center">
+                                ✨ Pesan Anda telah dikirimkan! Terima kasih.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderCustomSectionHTML(sec) {
+            return `
+                <section id="${sec.id}" class="py-16 sm:py-20 border-t border-pinky-100 bg-white/40">
+                    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="text-center max-w-2xl mx-auto mb-10">
+                            <div class="inline-flex items-center gap-2 text-pinky-500 font-semibold text-xs sm:text-sm tracking-wider uppercase mb-2">
+                                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                                <span>${sec.subTitle}</span>
+                            </div>
+                            <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">${sec.mainTitle}</h2>
+                            <p class="text-slate-600 text-sm sm:text-base mt-3">${sec.description}</p>
+                        </div>
+                        <div class="p-8 rounded-3xl glass-card figma-shadow text-center max-w-xl mx-auto border border-pinky-200">
+                            <p class="text-sm text-slate-600 italic">Section ini siap digunakan untuk menambahkan konten bisnis/layanan tambahan sesuai kebutuhan Anda.</p>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        // AUTHENTICATION LOGIC & TOGGLE
+        function toggleAdminMode() {
+            if (isLoggedIn) {
+                openAdminPanel();
+            } else {
+                openLoginModal();
+            }
+        }
+
+        function openLoginModal() {
+            const modal = document.getElementById('login-modal');
+            if(modal) modal.classList.remove('hidden');
+        }
+
+        function closeLoginModal() {
+            const modal = document.getElementById('login-modal');
+            if(modal) modal.classList.add('hidden');
+            const err = document.getElementById('login-error');
+            if(err) err.classList.add('hidden');
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const u = document.getElementById('login-username').value;
+            const p = document.getElementById('login-password').value;
+
+            if(u === appData.auth.username && p === appData.auth.password) {
+                isLoggedIn = true;
+                closeLoginModal();
+                renderFrontend();
+                openAdminPanel();
+            } else {
+                const err = document.getElementById('login-error');
+                if(err) err.classList.remove('hidden');
+            }
+        }
+
+        function logoutAdmin() {
+            isLoggedIn = false;
+            const panel = document.getElementById('admin-panel');
+            if(panel) panel.classList.add('hidden');
+            renderFrontend();
+        }
+
+        // ADMIN PANEL NAVIGATION & CONTROLLER
+        function openAdminPanel() {
+            if(!isLoggedIn) return openLoginModal();
+            const panel = document.getElementById('admin-panel');
+            if(panel) panel.classList.remove('hidden');
+            populateAdminInputs();
+            switchAdminTab('hero');
+        }
+
+        function exitAdminPanel() {
+            const panel = document.getElementById('admin-panel');
+            if(panel) panel.classList.add('hidden');
+            renderFrontend();
+        }
+
+        function switchAdminTab(tabName) {
+            document.querySelectorAll('.admin-tab-pane').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.admin-nav-item').forEach(el => el.classList.remove('bg-pinky-100', 'text-pinky-600'));
+
+            const targetPane = document.getElementById(`admin-tab-${tabName}-content`);
+            const targetNav = document.getElementById(`tab-nav-${tabName}`);
+            
+            if(targetPane) targetPane.classList.remove('hidden');
+            if(targetNav) targetNav.classList.add('bg-pinky-100', 'text-pinky-600');
+
+            const titles = {
+                hero: "Kelola Header & Hero Profil",
+                projects: "Kelola Kartu Proyek",
+                sections: "Manajemen Section (Edit / Tambah / Hapus)",
+                security: "Keamanan & Kredensial Admin"
+            };
+            const titleEl = document.getElementById('admin-tab-title');
+            if(titleEl) titleEl.textContent = titles[tabName] || "Panel Admin";
+
+            if(tabName === 'projects') renderAdminProjectsList();
+            if(tabName === 'sections') renderAdminSectionsList();
+        }
+
+        function populateAdminInputs() {
+            document.getElementById('admin-input-name').value = appData.hero.name;
+            document.getElementById('admin-input-email').value = appData.hero.email || "nadineputri@mutiarabangsa.sch.id";
+            document.getElementById('admin-input-badge').value = appData.hero.badgeText;
+            document.getElementById('admin-input-bio').value = appData.hero.bio;
+            document.getElementById('admin-input-avatar').value = appData.hero.avatarUrl;
+            document.getElementById('admin-new-username').value = appData.auth.username;
+            document.getElementById('admin-new-password').value = "";
+        }
+
+        function updateHeroData() {
+            appData.hero.name = document.getElementById('admin-input-name').value;
+            appData.hero.email = document.getElementById('admin-input-email').value;
+            appData.hero.badgeText = document.getElementById('admin-input-badge').value;
+            appData.hero.bio = document.getElementById('admin-input-bio').value;
+            appData.hero.avatarUrl = document.getElementById('admin-input-avatar').value;
+            saveData();
+        }
+
+        // ADMIN: PROJECTS CRUD
+        function renderAdminProjectsList() {
+            const list = document.getElementById('admin-projects-list');
+            if (!list) return;
+            list.innerHTML = '';
+
+            appData.projects.forEach(p => {
+                list.innerHTML += `
+                    <div class="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-pinky-50/40 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <img src="${p.image}" class="w-14 h-14 rounded-xl object-cover border border-pinky-200" />
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">${p.title}</h4>
+                                <p class="text-xs text-slate-500 uppercase tracking-wider font-semibold">${p.category}</p>
+                                ${p.link ? `<a href="${p.link}" target="_blank" class="text-[11px] text-pinky-500 underline truncate max-w-xs block">${p.link}</a>` : ''}
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 self-end sm:self-auto">
+                            <button onclick="editProject('${p.id}')" class="px-3 py-1.5 rounded-lg bg-pinky-100 text-pinky-600 hover:bg-pinky-200 text-xs font-semibold flex items-center gap-1">
+                                <i data-lucide="edit-2" class="w-3.5 h-3.5"></i> Edit
+                            </button>
+                            <button onclick="deleteProject('${p.id}')" class="px-3 py-1.5 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 text-xs font-semibold flex items-center gap-1">
+                                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Hapus
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            if(typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        function openProjectModal(editId = null) {
+            const modal = document.getElementById('project-edit-modal');
+            if(modal) modal.classList.remove('hidden');
+            const heading = document.getElementById('project-modal-heading');
+
+            if(editId) {
+                if(heading) heading.textContent = "Edit Proyek";
+                const p = appData.projects.find(item => item.id === editId);
+                if (p) {
+                    document.getElementById('proj-form-id').value = p.id;
+                    document.getElementById('proj-form-title').value = p.title;
+                    document.getElementById('proj-form-category').value = p.category;
+                    document.getElementById('proj-form-tags').value = p.tags.join(', ');
+                    document.getElementById('proj-form-link').value = p.link || '';
+                    document.getElementById('proj-form-image').value = p.image;
+                    document.getElementById('proj-form-desc').value = p.description;
+                }
+            } else {
+                if(heading) heading.textContent = "Tambah Proyek Baru";
+                document.getElementById('proj-form-id').value = '';
+                document.getElementById('proj-form-title').value = '';
+                document.getElementById('proj-form-category').value = 'uiux';
+                document.getElementById('proj-form-tags').value = '';
+                document.getElementById('proj-form-link').value = '';
+                document.getElementById('proj-form-image').value = '';
+                document.getElementById('proj-form-desc').value = '';
+            }
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('project-edit-modal');
+            if(modal) modal.classList.add('hidden');
+        }
+
+        function handleSaveProject(e) {
+            e.preventDefault();
+            const id = document.getElementById('proj-form-id').value;
+            const title = document.getElementById('proj-form-title').value;
+            const category = document.getElementById('proj-form-category').value;
+            const tags = document.getElementById('proj-form-tags').value.split(',').map(t => t.trim()).filter(Boolean);
+            const link = document.getElementById('proj-form-link').value;
+            const image = document.getElementById('proj-form-image').value;
+            const description = document.getElementById('proj-form-desc').value;
+
+            if(id) {
+                const index = appData.projects.findIndex(p => p.id === id);
+                if(index !== -1) {
+                    appData.projects[index] = { id, title, category, tags, link, image, description };
+                }
+            } else {
+                const newId = 'p_' + Date.now();
+                appData.projects.push({ id: newId, title, category, tags, link, image, description });
+            }
+
+            saveData();
+            closeProjectModal();
+            renderAdminProjectsList();
+        }
+
+        function editProject(id) {
+            openProjectModal(id);
+        }
+
+        function editProjectFrontend(id) {
+            if(!isLoggedIn) {
+                openLoginModal();
+                return;
+            }
+            openProjectModal(id);
+        }
+
+        function deleteProject(id) {
+            if(!isLoggedIn) {
+                openLoginModal();
+                return;
+            }
+            if(confirm('Yakin ingin menghapus proyek ini?')) {
+                appData.projects = appData.projects.filter(p => p.id !== id);
+                saveData();
+                renderAdminProjectsList();
+            }
+        }
+
+        // ADMIN: SECTIONS MANAGEMENT (EDIT, DELETE & ADD)
+        function renderAdminSectionsList() {
+            const container = document.getElementById('admin-sections-list');
+            if(!container) return;
+            container.innerHTML = '';
+
+            appData.sections.forEach(sec => {
+                container.innerHTML += `
+                    <div class="glass-card bg-white p-4 rounded-2xl border border-pinky-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="px-2 py-0.5 rounded bg-pinky-100 text-pinky-600 font-bold text-[10px] uppercase">ID: #${sec.id}</span>
+                                <h4 class="font-bold text-slate-800 text-sm">${sec.mainTitle} (${sec.navTitle})</h4>
+                            </div>
+                            <p class="text-xs text-slate-500">Sub: <span class="font-medium text-slate-700">${sec.subTitle}</span> | ${sec.description}</p>
+                        </div>
+                        
+                        <div class="flex items-center gap-2 self-end sm:self-auto">
+                            <button onclick="openNewSectionModal('${sec.id}')" class="px-3.5 py-2 rounded-xl bg-pinky-100 hover:bg-pinky-200 text-pinky-600 text-xs font-semibold flex items-center gap-1.5 transition-colors">
+                                <i data-lucide="edit-2" class="w-3.5 h-3.5"></i> Edit
+                            </button>
+                            ${sec.canDelete ? `
+                                <button onclick="deleteSection('${sec.id}')" class="px-3.5 py-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-600 text-xs font-semibold flex items-center gap-1.5 transition-colors">
+                                    <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Hapus
+                                </button>
+                            ` : `
+                                <span class="text-[11px] font-semibold text-slate-400 bg-slate-100 px-3 py-1.5 rounded-lg">Core Section</span>
+                            `}
+                        </div>
+                    </div>
+                `;
+            });
+            if(typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        function deleteSection(secId) {
+            if(confirm(`Apakah Anda yakin ingin MENGHAPUS TOTAL section #${secId}? Section ini tidak akan tampil lagi di website.`)) {
+                appData.sections = appData.sections.filter(s => s.id !== secId);
+                saveData();
+                renderAdminSectionsList();
+            }
+        }
+
+        function openNewSectionModal(editId = null) {
+            const modal = document.getElementById('new-section-modal');
+            const heading = document.getElementById('sec-modal-heading');
+            const modeInput = document.getElementById('sec-form-mode');
+            const idInput = document.getElementById('sec-form-id');
+
+            if(modal) modal.classList.remove('hidden');
+
+            if(editId) {
+                const sec = appData.sections.find(s => s.id === editId);
+                if(sec) {
+                    if(heading) heading.textContent = `Edit Section: #${sec.id}`;
+                    if(modeInput) modeInput.value = editId;
+                    if(idInput) {
+                        idInput.value = sec.id;
+                        idInput.disabled = true;
+                    }
+                    document.getElementById('sec-form-navtitle').value = sec.navTitle || sec.mainTitle;
+                    document.getElementById('sec-form-subtitle').value = sec.subTitle || '';
+                    document.getElementById('sec-form-maintitle').value = sec.mainTitle || '';
+                    document.getElementById('sec-form-desc').value = sec.description || '';
+                }
+            } else {
+                if(heading) heading.textContent = "Buat Section Baru";
+                if(modeInput) modeInput.value = "create";
+                if(idInput) {
+                    idInput.value = "";
+                    idInput.disabled = false;
+                }
+                document.getElementById('sec-form-navtitle').value = "";
+                document.getElementById('sec-form-subtitle').value = "";
+                document.getElementById('sec-form-maintitle').value = "";
+                document.getElementById('sec-form-desc').value = "";
+            }
+        }
+
+        function closeNewSectionModal() {
+            const modal = document.getElementById('new-section-modal');
+            if(modal) modal.classList.add('hidden');
+        }
+
+        function handleSaveSection(e) {
+            e.preventDefault();
+            const mode = document.getElementById('sec-form-mode').value;
+            const navTitle = document.getElementById('sec-form-navtitle').value;
+            const subTitle = document.getElementById('sec-form-subtitle').value;
+            const mainTitle = document.getElementById('sec-form-maintitle').value;
+            const description = document.getElementById('sec-form-desc').value;
+
+            if(mode !== "create") {
+                const secIndex = appData.sections.findIndex(s => s.id === mode);
+                if(secIndex !== -1) {
+                    appData.sections[secIndex].navTitle = navTitle;
+                    appData.sections[secIndex].subTitle = subTitle;
+                    appData.sections[secIndex].mainTitle = mainTitle;
+                    appData.sections[secIndex].description = description;
+                }
+            } else {
+                const id = document.getElementById('sec-form-id').value.toLowerCase().replace(/\s+/g, '-');
+                if(appData.sections.some(s => s.id === id)) {
+                    alert('ID Section sudah digunakan, silakan pilih ID lain.');
+                    return;
+                }
+
+                appData.sections.push({
+                    id: id,
+                    navTitle: navTitle,
+                    subTitle: subTitle,
+                    mainTitle: mainTitle,
+                    description: description,
+                    type: 'custom',
+                    canDelete: true
+                });
+            }
+
+            saveData();
+            closeNewSectionModal();
+            renderAdminSectionsList();
+        }
+
+        // ADMIN: CREDENTIALS UPDATE
+        function handleUpdateCredentials(e) {
+            e.preventDefault();
+            const newU = document.getElementById('admin-new-username').value;
+            const newP = document.getElementById('admin-new-password').value;
+
+            if(newU && newP) {
+                appData.auth.username = newU;
+                appData.auth.password = newP;
+                saveData();
+
+                const alert = document.getElementById('security-alert');
+                if(alert) {
+                    alert.classList.remove('hidden');
+                    setTimeout(() => alert.classList.add('hidden'), 4000);
+                }
+            }
+        }
+
+        // FRONTEND MODALS & FORMS
+        function openModal(title, desc, imgSrc, tags, link) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-desc').textContent = desc;
+            document.getElementById('modal-img').src = imgSrc;
+
+            const modalLinkBtn = document.getElementById('modal-link-btn');
+            if(modalLinkBtn) {
+                if(link && link !== '#') {
+                    modalLinkBtn.href = link;
+                    modalLinkBtn.classList.remove('hidden');
+                } else {
+                    modalLinkBtn.classList.add('hidden');
+                }
+            }
+
+            const modalTags = document.getElementById('modal-tags');
+            if(modalTags) {
+                modalTags.innerHTML = '';
+                tags.forEach(tag => {
+                    const tagEl = document.createElement('span');
+                    tagEl.className = 'px-2.5 py-1 rounded-md bg-pinky-100 text-pinky-600 text-xs font-semibold';
+                    tagEl.textContent = tag;
+                    modalTags.appendChild(tagEl);
+                });
+            }
+
+            const modal = document.getElementById('project-modal');
+            if(modal) modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('project-modal');
+            if(modal) modal.classList.add('hidden');
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const alertBox = document.getElementById('form-alert');
+            if(alertBox) alertBox.classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => {
+                if(alertBox) alertBox.classList.add('hidden');
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
