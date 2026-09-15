@@ -10,6 +10,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
+    <!-- Firebase SDK Import Map -->
+    <script type="importmap">
+    {
+        "imports": {
+            "firebase/app": "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js",
+            "firebase/firestore": "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"
+        }
+    }
+    </script>
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -460,7 +470,26 @@
     <!-- ========================================== -->
     <!-- CORE JAVASCRIPT STATE & APPLICATION ENGINE  -->
     <!-- ========================================== -->
-    <script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "firebase/app";
+        import { getFirestore, doc, getDoc, setDoc, onSnapshot } from "firebase/firestore";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyCPFCmbft3fgr3X8m8dt5cMnFcTgL0TcMU",
+          authDomain: "myportofolio-244ee.firebaseapp.com",
+          projectId: "myportofolio-244ee",
+          storageBucket: "myportofolio-244ee.firebasestorage.app",
+          messagingSenderId: "796164857022",
+          appId: "1:796164857022:web:70b3c86b5a53b32780d2ef"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const docRef = doc(db, "portfolio", "content");
+
         // INITIAL DEFAULT STATE DATA
         const DEFAULT_STATE = {
             auth: {
@@ -652,42 +681,76 @@
         let appData = JSON.parse(localStorage.getItem('ne_portfolio_data')) || DEFAULT_STATE;
         
         // Sync default state properties if missing or updated
-        if(appData) {
-            appData.hero.tagline = "Junior Web Developer & Tech Enthusiast";
-            appData.hero.focusText = "Junior Web Developer & Tech Enthusiast";
+        function syncAppDataDefaults() {
+            if(appData) {
+                if(!appData.hero) appData.hero = { ...DEFAULT_STATE.hero };
+                if(!appData.hero.tagline) appData.hero.tagline = "Junior Web Developer & Tech Enthusiast";
+                if(!appData.hero.focusText) appData.hero.focusText = "Junior Web Developer & Tech Enthusiast";
 
-            // Update NL Experience to Kelas 7 & Study Tour presentation
-            if(appData.experiences) {
-                const exp3 = appData.experiences.find(e => e.id === 'exp-3');
-                if(exp3) {
-                    exp3.year = "2024";
-                    exp3.grade = "Kelas 7";
-                    exp3.title = "Juara 2 Lomba Presentasi Natural Learning (Study Tour)";
-                    exp3.category = "Public Speaking & Study Tour";
-                    exp3.description = "Meraih Juara 2 pada ajang presentasi penyampaian laporan dan pengalaman edukatif dari kegiatan study tour Natural Learning kelas 7.";
+                // Update NL Experience to Kelas 7 & Study Tour presentation
+                if(appData.experiences) {
+                    const exp3 = appData.experiences.find(e => e.id === 'exp-3');
+                    if(exp3) {
+                        exp3.year = "2024";
+                        exp3.grade = "Kelas 7";
+                        exp3.title = "Juara 2 Lomba Presentasi Natural Learning (Study Tour)";
+                        exp3.category = "Public Speaking & Study Tour";
+                        exp3.description = "Meraih Juara 2 pada ajang presentasi penyampaian laporan dan pengalaman edukatif dari kegiatan study tour Natural Learning kelas 7.";
+                    }
+                }
+
+                // Ensure About Me section exists
+                if(appData.sections && !appData.sections.some(s => s.id === 'about')) {
+                    appData.sections.unshift({
+                        id: "about",
+                        navTitle: "Tentang Saya",
+                        subTitle: "Profil & Sekolah",
+                        mainTitle: "Tentang Saya",
+                        description: "Mengenal lebih dekat latar belakang pendidikan dan ketertarikan di dunia teknologi informatika.",
+                        type: "about",
+                        canDelete: false
+                    });
                 }
             }
-
-            // Ensure About Me section exists
-            if(appData.sections && !appData.sections.some(s => s.id === 'about')) {
-                appData.sections.unshift({
-                    id: "about",
-                    navTitle: "Tentang Saya",
-                    subTitle: "Profil & Sekolah",
-                    mainTitle: "Tentang Saya",
-                    description: "Mengenal lebih dekat latar belakang pendidikan dan ketertarikan di dunia teknologi informatika.",
-                    type: "about",
-                    canDelete: false
-                });
-            }
         }
+        syncAppDataDefaults();
         let isLoggedIn = false;
 
-        function saveData() {
-            localStorage.setItem('ne_portfolio_data', JSON.stringify(appData));
-            showSaveBadge();
-            renderFrontend();
+        async function saveData() {
+            try {
+                showSaveBadge();
+                await setDoc(docRef, appData);
+                // Simpan salinan lokal untuk mempercepat rendering saat offline/refresh
+                localStorage.setItem('ne_portfolio_data', JSON.stringify(appData));
+                renderFrontend();
+            } catch (error) {
+                console.error("Gagal menyimpan ke Firebase Firestore:", error);
+                alert("Gagal menyimpan data ke Firestore: " + error.message);
+            }
         }
+
+        // Real-time synchronization with Firebase Firestore
+        onSnapshot(docRef, async (docSnap) => {
+            if (docSnap.exists()) {
+                appData = docSnap.data();
+                syncAppDataDefaults();
+                renderFrontend();
+                if (isLoggedIn) {
+                    populateAdminInputs();
+                    renderAdminProjectsList();
+                    renderAdminSectionsList();
+                }
+            } else {
+                // Inisialisasi dokumen baru di Firestore jika belum ada
+                try {
+                    await setDoc(docRef, DEFAULT_STATE);
+                } catch (err) {
+                    console.warn("Gagal inisialisasi awal ke Firestore:", err);
+                }
+            }
+        }, (error) => {
+            console.error("Koneksi Firestore error:", error);
+        });
 
         function showSaveBadge() {
             const badge = document.getElementById('save-status-badge');
@@ -702,7 +765,7 @@
         }
 
         // INITIALIZATION
-        window.addEventListener('DOMContentLoaded', () => {
+        function initApp() {
             renderFrontend();
             
             // Safe binding for mobile menu button
@@ -717,7 +780,13 @@
             if(typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
-        });
+        }
+
+        if (document.readyState === 'loading') {
+            window.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+        }
 
         // FRONTEND RENDER ENGINE
         function renderFrontend() {
@@ -1559,6 +1628,37 @@
                 if(alertBox) alertBox.classList.add('hidden');
             }, 4000);
         }
+
+        // Window bindings for inline HTML event handlers
+        Object.assign(window, {
+            toggleAdminMode,
+            openLoginModal,
+            closeLoginModal,
+            handleLogin,
+            logoutAdmin,
+            openAdminPanel,
+            exitAdminPanel,
+            switchAdminTab,
+            populateAdminInputs,
+            updateHeroData,
+            renderAdminProjectsList,
+            openProjectModal,
+            closeProjectModal,
+            handleSaveProject,
+            editProject,
+            editProjectFrontend,
+            deleteProject,
+            renderAdminSectionsList,
+            deleteSection,
+            openNewSectionModal,
+            closeNewSectionModal,
+            handleSaveSection,
+            handleUpdateCredentials,
+            openModal,
+            closeModal,
+            handleContactSubmit,
+            saveData
+        });
     </script>
 </body>
 </html>
